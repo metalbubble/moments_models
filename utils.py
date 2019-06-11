@@ -31,7 +31,8 @@ def extract_frames(video_file, num_frames=8):
                                '-loglevel', 'panic',
                                'frames/%d.jpg']).communicate()
     frame_paths = sorted([os.path.join('frames', frame)
-                          for frame in os.listdir('frames')])
+                          for frame in os.listdir('frames')],
+                         key=lambda x: int(os.path.splitext(os.path.split(x)[-1])[0]))
     frames = load_frames(frame_paths, num_frames=num_frames)
     subprocess.call(['rm', '-rf', 'frames'])
     return frames
