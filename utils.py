@@ -33,7 +33,7 @@ def extract_frames(video_file, num_frames=8):
     frame_paths = sorted([os.path.join('frames', frame)
                           for frame in os.listdir('frames')],
                          key=lambda x: int(os.path.splitext(os.path.split(x)[-1])[0]))
-    frames = load_frames(frame_paths, num_frames=num_frames)
+    frames = load_frames(frame_paths, num_frames=min(num_frames, len(frame_paths)))
     subprocess.call(['rm', '-rf', 'frames'])
     return frames
 
