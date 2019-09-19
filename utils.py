@@ -30,9 +30,7 @@ def extract_frames(video_file, num_frames=8):
                                '-vframes', str(num_frames),
                                '-loglevel', 'panic',
                                'frames/%d.jpg']).communicate()
-    #frame_paths = sorted([os.path.join('frames', frame)
-    #                      for frame in os.listdir('frames')])
-    # Audrey's fix for proper temporal sorting
+    # Temporal sorting
     frame_paths = sorted([os.path.join('frames', frame)
                           for frame in os.listdir('frames')],
                          key=lambda x: int(os.path.splitext(os.path.split(x)[-1])[0]))
