@@ -6,7 +6,6 @@ import os
 import cv2
 import numpy as np
 from PIL import Image
-from scipy.misc import imresize as imresize
 
 import torch
 import torchvision.models as models
